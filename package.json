@@ -1,0 +1,60 @@
+{
+  "name": "myProj",
+  "version": "1.0.0",
+  "description": "A myProj-app application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "build": {
+    "productName": "门道云设计",
+    "appId": "com.myProj-app",
+    "directories": {
+      "output": "release",
+      "app": "./"
+    },
+    "electronDownload": {
+      "mirror": "https://npm.taobao.org/mirrors/electron/"
+    },
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "https://www.myProj.com/update_app_electron/"
+      }
+    ],
+    "asar": true,
+    "artifactName": "${productName}-${version}.${ext}",
+    "compression": "maximum",
+    "files": [
+      "**/*",
+      "!release${/*}",
+      "!**/*.txt"
+    ],
+    "win": {
+      "icon": "/icon/icon256.png",
+      "target": [
+        "nsis"
+      ],
+      "extraResources": "./lib/*.*"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "deleteAppDataOnUninstall": false,
+      "perMachine": false,
+      "allowElevation": true
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^10.4.7",
+    "electron-builder": "^22.11.7"
+  },
+  "dependencies": {
+    "electron-prompt": "^1.5.1",
+    "electron-updater": "^4.2.2"
+  }
+}
